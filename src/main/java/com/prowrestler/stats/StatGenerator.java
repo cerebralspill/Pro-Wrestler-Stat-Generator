@@ -8,6 +8,13 @@ public class StatGenerator {
 
     public static List<Integer> rollStats() {
         System.out.println("Rolling dice");
+        wait(500);
+        System.out.println(".");
+        wait(500);
+        System.out.println(".");
+        wait(500);
+        System.out.println(".\n");
+        wait(500);
 
         List<Integer> results = new ArrayList<>();
 
@@ -36,5 +43,17 @@ public class StatGenerator {
 
         return stat;
 
+    }
+
+    private static void wait(int ms)
+    {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
     }
 }
