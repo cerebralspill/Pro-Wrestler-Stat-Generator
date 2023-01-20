@@ -66,6 +66,38 @@ public class UserInput {
         return statChoice;
     }
 
+    public static String getName() {
+        boolean validInput = false;
+        String name = "unnamed";
+
+        boolean giveAName = getYesNoChoice("Would you like to name your character (y/n)?: ");
+
+        if (giveAName) {
+            System.out.print("Please enter a name: ");
+            name = input.nextLine();
+            validInput = true;
+        }
+
+        return name;
+    }
+
+    public static boolean getYesNoChoice(String choicePrompt) {
+        boolean validInput = false;
+        boolean saveChoice = false;
+        while (!validInput) {
+            System.out.println(choicePrompt);
+            String response = input.nextLine().trim().toLowerCase();
+
+            if (response.equals("y")) {
+                saveChoice = true;
+                validInput = true;
+            } else if (response.equals("n")) {
+                validInput = true;
+            }
+        }
+        return saveChoice;
+    }
+
 
 
 }
