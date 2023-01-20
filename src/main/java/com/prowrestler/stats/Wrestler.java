@@ -45,5 +45,50 @@ public class Wrestler {
         return new ArrayList<>(stats.keySet());
     }
 
+    @Override
+    public String toString() {
+        // STR = [18], Modifier: [+3]
+        String statString = "";
+        for (Map.Entry<String, Integer> stat : stats.entrySet()) {
+            String modifier = getModifier(stat.getValue());
+
+            statString += String.format("%1$-13s", stat.getKey() + " = [" + stat.getValue() + "], " ) +
+                    "Modifier: " + modifier + "\n";
+
+        }
+        return statString;
+    }
+
+    private String getModifier(Integer rawNum) {
+        String modifier = "[";
+        rawNum = (rawNum - 10) / 2;
+
+        modifier += String.format("%+d", rawNum);
+        modifier += "]";
+
+        return modifier;
+    }
+
+    public void resetStats() {
+        for (Map.Entry<String, Integer> stat : stats.entrySet()) {
+            stats.put(stat.getKey(), 0);
+        }
+    }
+
+    public boolean isStatEmpty(String key) {
+        return stats.get(key) == 0;
+    }
+
+    public int get(String key) {
+        return stats.get(key);
+    }
+
+    public boolean isValidStatType(String checkMe) {
+        return stats.containsKey(checkMe);
+    }
+
+    public void changeStat(String stat, int value) {
+        stats.put(stat, value);
+    }
 
 }
